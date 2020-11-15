@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// どのURLが入力されてもindexページに返す
+Route::get('/{any?}', fn () => view('index'))->where('any', '.+');
+
