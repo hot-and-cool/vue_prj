@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 // どのURLが入力されてもindexページに返す
 Route::get('/{any?}', fn () => view('index'))->where('any', '.+');
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
